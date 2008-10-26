@@ -1,0 +1,13 @@
+class AddLocation < ActiveRecord::Migration
+  TABLE = :users
+  def self.up
+    #13 places => 3 before + 10 after => 999.999_999_999_9
+    add_column TABLE, :decimal, :lat, :precision => 3, :scale => 10
+    add_column TABLE, :decimal, :lng, :precision => 3, :scale => 10
+  end
+
+  def self.down
+    remove_column TABLE, :lat
+    remove_column TABLE, :lng
+  end
+end
