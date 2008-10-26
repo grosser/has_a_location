@@ -30,12 +30,12 @@ USAGE
  - other options:
 
 
-      Legend: options key => default [recommended]
-      :default_units => :miles [:kms]
-      :default_formula => :sphere [:flat]
-      :lat_column_name=>:lat [:location_latitude]
-      :lng_column_name=>:lng [:location_longitude]
-      :distance_column_name=>:distance [:distance]
+    | Legend: options key => default [recommended]
+    | :default_units => :miles [:kms]
+    | :default_formula => :sphere [:flat]
+    | :lat_column_name=>:lat [:location_latitude]
+    | :lng_column_name=>:lng [:location_longitude]
+    | :distance_column_name=>:distance [:distance]
  
 
 AUTHOR
