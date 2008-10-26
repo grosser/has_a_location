@@ -27,15 +27,19 @@ USAGE
  - `user.location = [12.2332,323.2323]`
  - `user.in_radius(500)` => users in 500 miles distance
  - `show_map if user.location`
- - other options:
 
 
-    | Legend: options key => default [recommended]
-    | :default_units => :miles [:kms]
-    | :default_formula => :sphere [:flat]
-    | :lat_column_name=>:lat [:location_latitude]
-    | :lng_column_name=>:lng [:location_longitude]
-    | :distance_column_name=>:distance [:distance]
+OPTIONS
+=======
+
+    Legend: options key => default [recommended]
+    :default_location_lng => 0 [your default map longitude]
+    :default_location_lat => 0 [your default map latitude]
+    :default_units => :miles [:kms]
+    :default_formula => :sphere [:flat]
+    :lat_column_name=>:lat [:location_latitude]
+    :lng_column_name=>:lng [:location_longitude]
+    :distance_column_name=>:distance [:distance]
  
 
 AUTHOR
