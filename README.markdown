@@ -25,10 +25,11 @@ Model:
 USAGE
 =====
  - `user.location = [12.2332,323.2323]`
- - `user.in_radius(500)` => users in 500km distance
+ - `user.in_radius(500)` => users in 500 miles distance
  - `show_map if user.location`
  - other options:
- 
+
+
     Legend: options key => default [recommended]
     :default_units => :miles [:kms]
     :default_formula => :sphere [:flat]
