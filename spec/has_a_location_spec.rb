@@ -1,6 +1,6 @@
 require File.expand_path("spec_helper", File.dirname(__FILE__))
 
-describe "has a location" do
+describe HasALocation do
   before do
     @user = User.new
   end
@@ -60,5 +60,45 @@ describe "has a location" do
       @user.in_radius(10).should == []
     end
   end
-  
+
+  describe :on_map do
+    before do
+      @map_size = [290,164]
+      @map_zoom = 5
+      @map_center = [19.0,86.0]
+
+      User.delete_all
+      #somewhere in india, center + 1 in NE corner of the map + 1 in SW corner of the map
+      @user_in_center = User.create!(:location=>@map_center)
+      @on_map = [
+        User.create!(:location=>[21.6982654969,89.118359375]),#NE
+        User.create!(:location=>[17.1407903933,82.9337890625])#SW
+      ]
+      #4 locations outside the map in N/S/E/W
+      @off_map = [
+        User.create!(:location=>[23.1201536217,82.08984375]),#N
+        User.create!(:location=>[14.4346802153,87.5390625]),#S
+        User.create!(:location=>[21.6982654969,93.076171875]),#E
+        User.create!(:location=>[21.4121622297,79.013671875])#W
+      ]
+    end
+
+    it "finds all on map, expludes off map, excludes self" do
+      User.on_map(@map_center,@map_size,@map_zoom).to_a.map(&:id).should == [@user_in_center.id]+@on_map.map(&:id)
+    end
+
+    it "finds all on map, expludes off map, excludes self" do
+      @user_in_center.surrounding_on_map(@map_size,@map_zoom).to_a.map(&:id).should == @on_map.map(&:id)
+    end
+
+    it "does not alter given parameters" do
+      a=[1,2]
+      b=[3,4]
+      c=3
+      User.on_map(a,b,c)
+      a.should == [1,2]
+      b.should == [3,4]
+      c.should == 3
+    end
+  end
 end
