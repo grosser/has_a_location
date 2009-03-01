@@ -30,7 +30,7 @@ USAGE
  - `user.location = [12.2332,323.2323]` [latitude,longitude]
  - `show_map if user.location`
  - `user.in_radius(500)` => users in 500 miles distance
- - `User.on_map([640,480],5)` => all users visible on a 640x480 map zoom-level 5
+ - `User.on_map([11.12343,34,183323],[640,480],5)` => all users visible on a 640x480 map zoom-level 5, with center 11.12343,34,183323
  - `user.surrounding_on_map([640,480],5)` => other users visible on this map
 
 
