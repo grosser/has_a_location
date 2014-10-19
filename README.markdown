@@ -1,28 +1,32 @@
-GOALS
-=====
+Features
+========
  - add a location to your models (latitude/longitude)
  - find other models in a certain radius
  - find other models on the same map (giving map size in pixels and zoom level)
  - prevent assignment of a default location (value your map script uses as default/starting point)
- - complete test coverage
 
 
 INSTALL
 =======
 
-    script/plugin install git://github.com/ptb/geokit.git
-    script/plugin install git://github.com/grosser/has_a_location.git
+```Bash
+gem i has_a_location
+```
 
 Table with (see: MIGRATION):
 
-    lat
-    lng
+```
+lat
+lng
+```
 
 Model:
 
-    User < ActiveRecord::Base
-      has_a_location :default_location_lat=>10.10,:default_location_lng=>20.20
-    end
+```Ruby
+User < ActiveRecord::Base
+  has_a_location default_location_lat: 10.10, default_location_lng: 20.20
+end
+```
 
 
 USAGE
@@ -38,13 +42,13 @@ OPTIONS
 =======
 
     Legend: options key => default [recommended]
-    :default_location_lng => 0 [your default map longitude]
-    :default_location_lat => 0 [your default map latitude]
-    :default_units => :miles [:kms]
-    :default_formula => :sphere [:flat]
-    :lat_column_name=>:lat [:location_latitude]
-    :lng_column_name=>:lng [:location_longitude]
-    :distance_column_name=>:distance [:distance]
+    default_location_lng: 0 [your default map longitude]
+    default_location_lat: 0 [your default map latitude]
+    default_units: :miles [:kms]
+    default_formula: :sphere [:flat]
+    lat_column_name: :lat [:location_latitude]
+    lng_column_name: :lng [:location_longitude]
+    distance_column_name: :distance [:distance]
 
 
 TODO
@@ -54,5 +58,7 @@ TODO
 
 AUTHOR
 ======
-  Michael Grosser  
-  grosser dot michael ät gmail dot com  
+[Michael Grosser](http://grosser.it)<br/>
+michael@grosser.it<br/>
+License: MIT<br/>
+[![Build Status](https://travis-ci.org/grosser/parallel.png)](https://travis-ci.org/grosser/parallel)

@@ -1,12 +1,7 @@
-require 'rubygems'
-require 'spec'
+require 'bundler/setup'
+require 'bundler/gem_tasks'
+require 'bump/tasks'
 
-desc 'Default: run spec.'
-task :default => :spec
-
-desc "Run all specs in spec directory"
-task :spec do |t|
-  options = "--colour --format progress --loadby --reverse"
-  files = FileList['spec/**/*_spec.rb']
-  system("spec #{options} #{files}")
+task :default do
+  sh "rspec spec/"
 end

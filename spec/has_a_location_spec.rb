@@ -51,7 +51,7 @@ describe HasALocation do
     
     it "finds using origin" do
       @user.save
-      User.expects(:find).with(:all, :origin => [1,1], :conditions => ["distance < ? AND id != ?",10,@user.id])
+      User.should_receive(:where).with("distance < ? AND id != ?", 10, @user.id)
       @user.in_radius(10)
     end
     

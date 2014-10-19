@@ -1,4 +1,6 @@
-require 'mercator'
+require 'active_record'
+require 'has_a_location/mercator'
+
 # all locations are [latitude,longitude]
 # can get confusing since the natural order [x,y] is reversed
 module HasALocation
@@ -26,7 +28,7 @@ module HasALocation
     def on_map(center,size,zoom)
       lat = "(#{lat_column_name} BETWEEN #{MapHelper.latitude_range(center,size,zoom)*' AND '})"
       lng = "(#{lng_column_name} BETWEEN #{MapHelper.longitude_range(center,size,zoom)*' AND '})"
-      find(:all,:conditions=>"#{lat} AND #{lng}")
+      where("#{lat} AND #{lng}")
     end
   end
   
@@ -82,3 +84,5 @@ module HasALocation
     end
   end
 end
+
+ActiveRecord::Base.send :include, HasALocation
